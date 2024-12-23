@@ -1,12 +1,10 @@
 <html lang="pt-BR">
- <head>
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   My Bio
-  </title>
+  <title>Noir Bio</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes shine {
@@ -24,42 +22,246 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .icon:hover {
+      color: #1da1f2;
+      transform: scale(1.2);
+      transition: transform 0.3s, color 0.3s;
+      filter: drop-shadow(0 0 10px #1da1f2);
+    }
+    .profile-pic:hover {
+      transform: rotate(360deg);
+      transition: transform 1s;
+    }
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 5s infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(20px, -20px) scale(1.5);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+      }
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      cursor: pointer;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1001;
+      display: none;
+    }
+    .popup img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .popup .username {
+      margin-top: 10px;
+      font-size: 1.5em;
+      color: white;
+    }
+    .popup .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #1da1f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .volume-control-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s;
+    }
+    .volume-control-container:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+    .volume-icon {
+      color: white;
+      transition: transform 0.3s;
+    }
+    .volume-icon:hover {
+      transform: scale(1.2);
+    }
+    .volume-slider {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: display 0.3s;
+    }
+    .volume-control-container:hover .volume-slider {
+      display: flex;
+    }
+    .volume-slider input[type="range"] {
+      -webkit-appearance: none;
+      width: 8px;
+      height: 100px;
+      background: #ddd;
+      border-radius: 5px;
+      outline: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      writing-mode: bt-lr; /* IE */
+      -webkit-appearance: slider-vertical; /* WebKit */
+      appearance: slider-vertical; /* Standard */
+    }
+    .volume-slider input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #1da1f2;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .volume-slider input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #1da1f2;
+      cursor: pointer;
+      border-radius: 50%;
+    }
   </style>
- </head>
- <body class="flex items-center justify-center h-screen m-0 p-0">
+</head>
+<body class="flex items-center justify-center h-screen m-0 p-0">
   <video autoplay muted loop class="absolute w-full h-full object-cover">
-   <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320799958793977917/devilwallpaper.mp4?ex=676aea51&is=676998d1&hm=eaed02322ce2e09df9c12d63f74e6fa32783c7d86f725ef8dbfc3983f1afa197&" type="video/mp4"/>
-   Seu navegador não suporta o elemento de vídeo.
+    <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320799958793977917/devilwallpaper.mp4?ex=676aea51&is=676998d1&hm=eaed02322ce2e09df9c12d63f74e6fa32783c7d86f725ef8dbfc3983f1afa197&" type="video/mp4"/>
+    Seu navegador não suporta o elemento de vídeo.
   </video>
-  <audio autoplay loop>
-   <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320803819961188373/classified_-_Release.mp3?ex=676aedea&is=67699c6a&hm=de61ce101d3fc1f787f65cf18ccebbe2c60c616c2ba8c8100aaace57b114decb&" type="audio/mpeg"/>
-   Seu navegador não suporta o elemento de áudio.
+  <audio id="background-audio" loop>
+    <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320803819961188373/classified_-_Release.mp3?ex=676aedea&is=67699c6a&hm=de61ce101d3fc1f787f65cf18ccebbe2c60c616c2ba8c8100aaace57b114decb&" type="audio/mpeg"/>
+    Seu navegador não suporta o elemento de áudio.
   </audio>
-  <div class="relative z-10 text-center bg-black bg-opacity-70 p-6 rounded-lg">
-   <img alt="Foto de perfil de Noir com um fundo neutro" class="rounded-full w-36 h-36 object-cover mx-auto" src="https://cdn.discordapp.com/attachments/1042178499693248516/1320800309924331530/51xN3slHkPL._UXNaN_FMjpg_QL85_.jpg?ex=676aeaa5&is=67699925&hm=3243423a3a6c7fd9f2b65faefb975924cadce0160f5549a4fe9999d043bb125e&"/>
-   <div class="text-2xl mt-4 text-white shine font-bold">
-    Noir
-   </div>
-   <div class="flex justify-center mt-4 space-x-4 text-xl">
-    <a href="https://steamcommunity.com/id/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-steam"></i>
-    </a>
-    <a href="https://discord.com/users/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-discord"></i>
-    </a>
-    <a href="https://github.com/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-github"></i>
-    </a>
-    <a href="https://www.youtube.com/channel/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://open.spotify.com/user/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-spotify"></i>
-    </a>
-    <a href="https://www.twitch.tv/seuusuario" target="_blank" class="text-white hover:text-blue-400">
-     <i class="fab fa-twitch"></i>
-    </a>
-   </div>
+  <div class="absolute top-4 left-4 z-20 volume-control-container">
+    <i class="fas fa-volume-up volume-icon"></i>
+    <div class="volume-slider">
+      <input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5" class="appearance-none cursor-pointer">
+    </div>
   </div>
- </body>
+  <div class="relative z-10 text-center bg-black bg-opacity-70 p-6 rounded-lg">
+    <img alt="Foto de perfil de Noir com um fundo neutro" class="profile-pic rounded-full w-36 h-36 object-cover mx-auto" src="https://cdn.discordapp.com/attachments/1042178499693248516/1320800309924331530/51xN3slHkPL._UXNaN_FMjpg_QL85_.jpg?ex=676aeaa5&is=67699925&hm=3243423a3a6c7fd9f2b65faefb975924cadce0160f5549a4fe9999d043bb125e&"/>
+    <div class="text-2xl mt-4 text-white shine font-bold relative">
+      Noir
+      <div class="particles">
+        <div class="particle" style="top: -10px; left: 50%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 50%; left: -10px; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 50%; right: -10px; animation-delay: 2s;"></div>
+        <div class="particle" style="bottom: -10px; left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 25%; left: 25%; animation-delay: 4s;"></div>
+        <div class="particle" style="top: 25%; right: 25%; animation-delay: 5s;"></div>
+        <div class="particle" style="bottom: 25%; left: 25%; animation-delay: 6s;"></div>
+        <div class="particle" style="bottom: 25%; right: 25%; animation-delay: 7s;"></div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-4 space-x-4 text-xl">
+      <a href="https://steamcommunity.com/id/cc_rajada" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-steam"></i>
+      </a>
+      <a href="#" id="discord-link" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://github.com/noir157" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.youtube.com/@Guizindz" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://open.spotify.com/user/zz2sixxl4vaw6rnavsa74uprr?si=32aaa9e75e2b4c05&nd=1&dlsi=fd8a3d11da3745cb" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-spotify"></i>
+      </a>
+      <a href="https://music.apple.com/profile/Noir157" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-apple"></i>
+      </a>
+      <a href="https://www.twitch.tv/guizindz" target="_blank" class="text-white hover:text-blue-400 icon">
+        <i class="fab fa-twitch"></i>
+      </a>
+    </div>
+  </div>
+  <div id="overlay" class="overlay">
+    Clique para entrar!
+  </div>
+  <div id="discord-popup" class="popup">
+    <img src="https://cdn.discordapp.com/attachments/1042178499693248516/1320800309924331530/51xN3slHkPL._UXNaN_FMjpg_QL85_.jpg?ex=676aeaa5&is=67699925&hm=3243423a3a6c7fd9f2b65faefb975924cadce0160f5549a4fe9999d043bb125e&" alt="Foto de perfil de Noir com um fundo neutro">
+    <div class="username">.n01r_</div>
+    <button class="close-btn" onclick="closePopup()">Fechar</button>
+  </div>
+  <script>
+    document.getElementById('overlay').addEventListener('click', function() {
+      var audio = document.getElementById('background-audio');
+      audio.play().catch(function(error) {
+        console.log('Audio playback failed:', error);
+      });
+      document.getElementById('overlay').style.display = 'none';
+    });
+
+    document.getElementById('discord-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('discord-popup').style.display = 'block';
+    });
+
+    function closePopup() {
+      document.getElementById('discord-popup').style.display = 'none';
+    }
+
+    document.getElementById('volume-control').addEventListener('input', function() {
+      var audio = document.getElementById('background-audio');
+      audio.volume = this.value;
+    });
+  </script>
+</body>
 </html>
