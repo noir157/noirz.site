@@ -1,299 +1,96 @@
-<html lang="pt-BR">
+<!-- credits to @alcoolique -->
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Noir Bio</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes shine {
-      0% {
-        background-position: -200px;
-      }
-      100% {
-        background-position: 200px;
-      }
-    }
-    .shine {
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0.3) 75%);
-      background-size: 200px 100%;
-      animation: shine 2s infinite linear;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .icon:hover {
-      color: #1da1f2;
-      transform: scale(1.2);
-      transition: transform 0.3s, color 0.3s;
-      filter: drop-shadow(0 0 10px #1da1f2);
-    }
-    .profile-pic {
-      transition: transform 1s, box-shadow 0.3s;
-    }
-    .profile-pic:hover {
-      animation: breathing 2s infinite;
-      box-shadow: 0 0 20px #1da1f2, 0 0 30px #1da1f2, 0 0 40px #1da1f2, 0 0 50px #1da1f2;
-    }
-    @keyframes breathing {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: float 5s infinite;
-    }
-    @keyframes float {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        transform: translate(20px, -20px) scale(1.5);
-        opacity: 0.4;
-      }
-      100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.8;
-      }
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      cursor: pointer;
-    }
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 1001;
-      display: none;
-    }
-    .popup img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-    }
-    .popup .username {
-      margin-top: 10px;
-      font-size: 1.5em;
-      color: white;
-    }
-    .popup .close-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #1da1f2;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .volume-control-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: background 0.3s;
-    }
-    .volume-control-container:hover {
-      background: rgba(0, 0, 0, 0.9);
-    }
-    .volume-icon {
-      color: white;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-    .volume-icon:hover {
-      transform: scale(1.2);
-    }
-    .volume-slider {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: display 0.3s;
-    }
-    .volume-control-container:hover .volume-slider {
-      display: flex;
-    }
-    .volume-slider input[type="range"] {
-      -webkit-appearance: none;
-      width: 8px;
-      height: 100px;
-      background: #ddd;
-      border-radius: 5px;
-      outline: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      writing-mode: bt-lr; /* IE */
-      -webkit-appearance: slider-vertical; /* WebKit */
-      appearance: slider-vertical; /* Standard */
-    }
-    .volume-slider input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: #1da1f2;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .volume-slider input[type="range"]::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      background: #1da1f2;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>noirz.site</title>
+    <meta name="theme-color" content="#000001">
+    <link rel="stylesheet" href="public/users/css/cat.css">
+    <link rel="icon" href="public\src\img\1281904753252765717.png" type="image/x-icon">
+    <link rel="shortcut icon" href="public\src\img\1281904753252765717.png" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta content="follow me on ig @7irate !!" property="og:title" />
+    <meta content="https://noirz.site/" property="og:url" />
+    <meta content="https://i.imgur.com/y6XhCX6.jpeg" property="og:image" />
+    <meta content="#000001" data-react-helmet="true" name="theme-color" />
 </head>
-<body class="flex items-center justify-center h-screen m-0 p-0">
-  <video autoplay muted loop class="absolute w-full h-full object-cover">
-    <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320799958793977917/devilwallpaper.mp4?ex=676aea51&is=676998d1&hm=eaed02322ce2e09df9c12d63f74e6fa32783c7d86f725ef8dbfc3983f1afa197&" type="video/mp4"/>
-    Seu navegador não suporta o elemento de vídeo.
-  </video>
-  <audio id="background-audio" loop>
-    <source src="https://cdn.discordapp.com/attachments/1042178499693248516/1320803819961188373/classified_-_Release.mp3?ex=676aedea&is=67699c6a&hm=de61ce101d3fc1f787f65cf18ccebbe2c60c616c2ba8c8100aaace57b114decb&" type="audio/mpeg"/>
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-  <div class="absolute top-4 left-4 z-20 volume-control-container">
-    <i class="fas fa-volume-up volume-icon" id="volume-icon"></i>
-    <div class="volume-slider">
-      <input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5" class="appearance-none cursor-pointer">
+<script src="snow.js"></script>
+<script src="effects.js"></script>
+<script src="effects2.js"></script>
+<script src="view.js"></script>
+<body>
+
+    <div id="overlay">
+        <button class="overlaybtn" onclick="removeOverlay()">𝕵𝖚𝖘𝖙𝖎𝖈𝖊</button>
     </div>
-  </div>
-  <div class="relative z-10 text-center bg-black bg-opacity-70 p-6 rounded-lg">
-    <img alt="Foto de perfil de Noir com um fundo neutro" class="profile-pic rounded-full w-36 h-36 object-cover mx-auto" src="https://cdn.discordapp.com/attachments/1042178499693248516/1320871113856913490/7fa771efdf54f03aad7942ecfda83f7f.jpg?ex=676b2c96&is=6769db16&hm=67032c828018a2f2b25414c1f924895cdde8bf2f3df38d86949df3145cbb5d0e&518157a09a121965ffea9&"/>
-    <div class="text-2xl mt-4 text-white shine font-bold relative">
-      Noir
-      <div class="particles">
-        <div class="particle" style="top: -10px; left: 50%; animation-delay: 0s;"></div>
-        <div class="particle" style="top: 50%; left: -10px; animation-delay: 1s;"></div>
-        <div class="particle" style="top: 50%; right: -10px; animation-delay: 2s;"></div>
-        <div class="particle" style="bottom: -10px; left: 50%; animation-delay: 3s;"></div>
-        <div class="particle" style="top: 25%; left: 25%; animation-delay: 4s;"></div>
-        <div class="particle" style="top: 25%; right: 25%; animation-delay: 5s;"></div>
-        <div class="particle" style="bottom: 25%; left: 25%; animation-delay: 6s;"></div>
-        <div class="particle" style="bottom: 25%; right: 25%; animation-delay: 7s;"></div>
-      </div>
+
+    <div id="user-page">
+
+        <video class="background" autoplay loop muted>
+            <source src="./r2.wya.lol/noirbanner2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="main-container" id="mainDiv">
+
+            <div class="profile-container">
+                <img class="pp" src="./r2.wya.lol/noiravatar.jpg" draggable="false">
+                <p class="username breathing" data-tooltip="uid: 1">Noir</p>
+
+                <div class="badges-container">
+                    <div class="badges pic-badge" id="prem" data-tooltip="premium user" style="background-image: url('public/src/badges/premium.png');"></div>
+                    <div class="badges pic-badge" id="own" data-tooltip="site owner" style="background-image: url('public/src/badges/booster.png');" bis_skin_checked="1"></div>
+                    <div class="badges pic-badge" id="early "data-tooltip="early user" style="background-image: url('public/src/badges/early.png');"></div>
+                </div>
+
+                <div class="bio-container">
+                    <div class="bio typewriter"></div>
+                </div>
+                <div class="pre-container">
+                    <div class="pre">
+                        <div class="cropped">
+                            <img draggable="false" id="rpc">
+                        </div>
+                    </div>
+                </div>
+                <div class="links-container" id="linksDiv">           
+                    <div class="logo steam" id="steam" onclick="window.open('https://steamcommunity.com/id/cc_rajada', '_blank');">
+                        <i class="fab fa-steam"></i>
+                    </div> 
+                    <div class="logo github" id="github" onclick="window.open('https://github.com//noir157', '_blank');">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="logo youtube" id="youtube" onclick="window.open('https://www.youtube.com/@Guizindz', '_blank');">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="logo apple-music" id="apple-music" onclick="window.open('https://music.apple.com/profile/Noir157', '_blank');">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="logo twitch" id="twitch" onclick="window.open('https://www.twitch.tv/guizindz', '_blank');">
+                        <i class="fab fa-twitch"></i>
+                    </div> 
+                </div>
+
+                <div class="linksline"></div>
+
+                <div class="views-container">
+                    <svg viewBox="0 0 24 24" width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0" style="margin-bottom: -3px;"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 14C3 9.02944 7.02944 5 12 5C16.9706 5 21 9.02944 21 14M17 14C17 16.7614 14.7614 19 12 19C9.23858 19 7 16.7614 7 14C7 11.2386 9.23858 9 12 9C14.7614 9 17 11.2386 17 14Z" stroke="#c18be0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <span id="view-count">666</span>
+                </div>
+            </div>
+
+        <div class="mutebutton">
+            <p id="mutetext" onclick="toggleMusic()">on</p>
+        </div>
+
     </div>
-    <div class="flex justify-center mt-4 space-x-4 text-xl">
-      <a href="https://steamcommunity.com/id/cc_rajada" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-steam"></i>
-      </a>
-      <a href="#" id="discord-link" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://github.com/noir157" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.youtube.com/@Guizindz" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://open.spotify.com/user/zz2sixxl4vaw6rnavsa74uprr?si=32aaa9e75e2b4c05&nd=1&dlsi=fd8a3d11da3745cb" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-spotify"></i>
-      </a>
-      <a href="https://music.apple.com/profile/Noir157" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-apple"></i>
-      </a>
-      <a href="https://www.twitch.tv/guizindz" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fab fa-twitch"></i>
-      </a>
-      <a href="https://guns.lol/noirz" target="_blank" class="text-white hover:text-blue-400 icon">
-        <i class="fas fa-crosshairs"></i>
-      </a>
-    </div>
-  </div>
-  <div id="overlay" class="overlay">
-    Clique para entrar.
-  </div>
-  <div id="discord-popup" class="popup">
-    <img src="https://cdn.discordapp.com/attachments/1042178499693248516/1320800309924331530/51xN3slHkPL._UXNaN_FMjpg_QL85_.jpg?ex=676aeaa5&is=67699925&hm=3243423a3a6c7fd9f2b65faefb975924cadce0160f5549a4fe9999d043bb125e&" alt="Foto de perfil de Noir com um fundo neutro">
-    <div class="username">.n01r_</div>
-    <button class="close-btn" onclick="closePopup()">Fechar</button>
-  </div>
-  <script>
-    document.getElementById('overlay').addEventListener('click', function() {
-      var audio = document.getElementById('background-audio');
-      audio.play().catch(function(error) {
-        console.log('Audio playback failed:', error);
-      });
-      document.getElementById('overlay').style.display = 'none';
-    });
 
-    document.getElementById('discord-link').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('discord-popup').style.display = 'block';
-    });
+    <audio id="backgroundsong" src="./r2.wya.lol/classified.mp3" loop></audio>
 
-    function closePopup() {
-      document.getElementById('discord-popup').style.display = 'none';
-    }
-
-    document.getElementById('volume-control').addEventListener('input', function() {
-      var audio = document.getElementById('background-audio');
-      audio.volume = this.value;
-    });
-
-    document.getElementById('volume-icon').addEventListener('click', function() {
-      var audio = document.getElementById('background-audio');
-      var volumeIcon = document.getElementById('volume-icon');
-      if (audio.muted) {
-        audio.muted = false;
-        volumeIcon.classList.remove('fa-volume-mute');
-        volumeIcon.classList.add('fa-volume-up');
-      } else {
-        audio.muted = true;
-        volumeIcon.classList.remove('fa-volume-up');
-        volumeIcon.classList.add('fa-volume-mute');
-      }
-    });
-  </script>
 </body>
+
 </html>
+
