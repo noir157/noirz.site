@@ -635,3 +635,11 @@ canvas {
     cursor: pointer;
     text-decoration: underline; /* Opcional para destacar visualmente o clique */
 }
+
+/* mute icon */
+
+#mutetext {
+    color: rgba(255, 255, 255, 0.493); /* Cor do ícone */
+    font-size: 15px; /* Tamanho */
+    cursor: pointer; /* Estilo do cursor ao passar por cima */
+}
