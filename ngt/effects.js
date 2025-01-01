@@ -25,12 +25,13 @@ function removeOverlay() {
 }
 
 function toggleMusic() {
-    var mutebtn = document.getElementById("mutetext");
-        if (mutebtn.innerHTML == "off") mutebtn.innerHTML = "on";
-        else mutebtn.innerHTML = "off";
-    
-    var audio = document.getElementById('backgroundsong')
-    audio.muted = !audio.muted;
+    const mutebtn = document.getElementById("mutetext");
+    const audio = document.getElementById("backgroundsong");
+
+    if (audio) {
+        audio.muted = !audio.muted;
+        mutebtn.innerHTML = `<i class="${audio.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'}"></i>`;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
