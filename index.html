@@ -22,12 +22,22 @@
 <script src="effects2.js"></script>
 <script src="view.js"></script>
 <script src="members.js"></script>
+<script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js"></script>
 
 <body>
 
     <div id="overlay">
         <button class="overlaybtn" onclick="removeOverlay()">𝖑𝖚𝖘𝖙</button>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js"></script>
+    <script>
+        const devtool = new DisableDevtool();
+        devtool.on('detect', () => {
+            alert('Ferramentas de desenvolvedor detectadas!');
+            // Você pode redirecionar, bloquear ou fazer outras ações aqui.
+        });
+    </script>
 
     <div id="members-toggle" onclick="toggleMembersList()" aria-expanded="false" aria-controls="members-list">
         <i id="members-icon" class="fa fa-users"></i>
@@ -47,7 +57,7 @@
     <div id="user-page">
 
         <video class="background" autoplay loop muted>
-            <source src="./r2.wya.lol/noirbanner2.mp4" type="video/mp4">
+            <source src="./r2.wya.lol/city.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -101,12 +111,13 @@
             </div>
 
         <div class="mutebutton">
-            <p id="mutetext" onclick="toggleMusic()">on</p>
+            <p id="mutetext" onclick="toggleMusic()"><i class="fas fa-volume-up"></i></p>
         </div>
+            
 
     </div>
 
-    <audio id="backgroundsong" src="./r2.wya.lol/classified.mp3" loop></audio>
+    <audio id="backgroundsong" src="./r2.wya.lol/all night.mp3" loop></audio>
 
 </body>
 
