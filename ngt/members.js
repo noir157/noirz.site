@@ -18,6 +18,8 @@ function redirectToMember(memberName) {
         url = 'https://noirz.site/';
     } else if (memberName === 'Emmanuel') {
         url = 'https://noirz.site/ngt';
+    } else if (memberName === 'Baresi') {
+        url = 'https://noirz.site/baresi';
     }
 
     if (url) {
